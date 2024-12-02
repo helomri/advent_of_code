@@ -3,7 +3,7 @@ import 'package:advent_of_code/advent_of_code.dart';
 class Puzzle2024022 extends PuzzlePart {
   @override
   Map<String, String?> get dependentTestFiles =>
-      {'test_input': 'test_result', 'input': null};
+      {'test_input': 'test_result', 'input': 'output'};
 
   @override
   PuzzleIdentifier get id => PuzzleIdentifier(2024, 02, 2);
@@ -12,77 +12,57 @@ class Puzzle2024022 extends PuzzlePart {
   PuzzleOutput run(String input) {
     List<List<int>> reports = input
         .split('\n')
-        .map(
-            (e) => e.split(' ').map((e) => int.parse(e)).toList(growable: true))
+        .map((e) =>
+            e.split(' ').map((e) => int.parse(e)).toList(growable: false))
         .toList(growable: false);
 
     int safeReportAmount = 0;
-    for (int reportId = 0; reportId < reports.length; reportId++) {
-      List<int> report = reports[reportId];
-      print('$report is being tested');
-      bool isIncreasing = report.first < report[1];
-      bool alreadyRemovedNumber = false;
-
-      for (int i = 1; i < report.length; i++) {
-        bool removeIfPossible() {
-          if (alreadyRemovedNumber) return false;
-
-          report.removeAt(i);
-          alreadyRemovedNumber = true;
-          i = 1;
-
-          return true;
+    for (final report in reports) {
+      for (int toDelete = -1; toDelete < report.length; toDelete++) {
+        late List<int> currentReport;
+        if (toDelete == -1) {
+          currentReport = report;
+        } else {
+          currentReport = List.from(report)..removeAt(toDelete);
         }
 
-        if (report[i] == report[i - 1]) {
-          if (!removeIfPossible()) {
-            print('$report is incorrect');
-            safeReportAmount--;
-            break;
-          } else {
-            continue;
-          }
-        }
-
-        late int difference;
-
-        if (report[i - 1] < report[i]) {
-          if (!isIncreasing) {
-            if (!removeIfPossible()) {
-              print('$report is incorrect');
-              safeReportAmount--;
-              break;
-            } else {
-              continue;
-            }
-          }
-
-          difference = report[i] - report[i - 1];
-        }
-        if (report[i - 1] > report[i]) {
-          if (isIncreasing) {
-            if (!removeIfPossible()) {
-              print('$report is incorrect');
-              safeReportAmount--;
-              break;
-            } else {
-              continue;
-            }
-          }
-
-          difference = report[i - 1] - report[i];
-        }
-
-        if (difference > 3) {
-          if (!removeIfPossible()) {
-            print('$report is incorrect');
-            safeReportAmount--;
+        bool isCorrect = true;
+        bool isIncreasing = currentReport.first < currentReport[1];
+        for (int i = 1; i < currentReport.length; i++) {
+          if (currentReport[i] == currentReport[i - 1]) {
+            isCorrect = false;
             break;
           }
+
+          late int difference;
+
+          if (currentReport[i - 1] < currentReport[i]) {
+            if (!isIncreasing) {
+              isCorrect = false;
+              break;
+            }
+
+            difference = currentReport[i] - currentReport[i - 1];
+          }
+          if (currentReport[i - 1] > currentReport[i]) {
+            if (isIncreasing) {
+              isCorrect = false;
+              break;
+            }
+
+            difference = currentReport[i - 1] - currentReport[i];
+          }
+
+          if (difference > 3) {
+            isCorrect = false;
+            break;
+          }
+        }
+        if (isCorrect) {
+          safeReportAmount++;
+          break;
         }
       }
-      print('$report just got tested');
-      safeReportAmount++;
     }
 
     return PuzzleOutput(safeReportAmount.toString());

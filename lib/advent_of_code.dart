@@ -4,6 +4,8 @@ import 'package:advent_of_code/src/2024/1/1.dart';
 import 'package:advent_of_code/src/2024/1/2.dart';
 import 'package:advent_of_code/src/2024/2/1.dart';
 import 'package:advent_of_code/src/2024/2/2.dart';
+import 'package:advent_of_code/src/2024/3/1.dart';
+import 'package:advent_of_code/src/2024/3/2.dart';
 import 'package:logging/logging.dart';
 
 typedef PI = PuzzleIdentifier;
@@ -126,4 +128,6 @@ Set<PuzzlePart> puzzleParts = {
   Puzzle2024012(),
   Puzzle2024021(),
   Puzzle2024022(),
+  Puzzle2024031(),
+  Puzzle2024032(),
 };

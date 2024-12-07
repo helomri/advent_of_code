@@ -8,6 +8,12 @@ import 'package:advent_of_code/src/2024/3/1.dart';
 import 'package:advent_of_code/src/2024/3/2.dart';
 import 'package:advent_of_code/src/2024/4/1.dart';
 import 'package:advent_of_code/src/2024/4/2.dart';
+import 'package:advent_of_code/src/2024/5/1.dart';
+import 'package:advent_of_code/src/2024/5/2.dart';
+import 'package:advent_of_code/src/2024/6/1.dart';
+import 'package:advent_of_code/src/2024/6/2.dart';
+import 'package:advent_of_code/src/2024/7/1.dart';
+import 'package:advent_of_code/src/2024/7/2.dart';
 import 'package:logging/logging.dart';
 
 typedef PI = PuzzleIdentifier;
@@ -134,4 +140,10 @@ Set<PuzzlePart> puzzleParts = {
   Puzzle2024032(),
   Puzzle2024041(),
   Puzzle2024042(),
+  Puzzle2024051(),
+  Puzzle2024052(),
+  Puzzle2024061(),
+  Puzzle2024062(),
+  Puzzle2024071(),
+  Puzzle2024072(),
 };

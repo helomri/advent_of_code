@@ -3,7 +3,7 @@ import 'package:advent_of_code/advent_of_code.dart';
 class Puzzle2024012 extends PuzzlePart {
   @override
   Map<String, String?> get dependentTestFiles =>
-      {'test_input': 'test_result', 'input': 'output'};
+      {'test_input': 'test_output', 'input': 'output'};
 
   @override
   PuzzleIdentifier get id => PI(2024, 01, 2);

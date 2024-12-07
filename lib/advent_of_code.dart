@@ -15,6 +15,7 @@ import 'package:advent_of_code/src/2024/6/2.dart';
 import 'package:advent_of_code/src/2024/7/1.dart';
 import 'package:advent_of_code/src/2024/7/2.dart';
 import 'package:logging/logging.dart';
+import 'package:path/path.dart';
 
 typedef PI = PuzzleIdentifier;
 
@@ -96,9 +97,11 @@ abstract class PuzzlePart {
   }
 
   bool? testOne(File inputTestFile, File? outputTestFile) {
+    final watch = Stopwatch();
+    final testName =
+        "${basename(inputTestFile.path)} -> ${outputTestFile == null ? '(no output)' : basename(outputTestFile.path)}";
     if (!inputTestFile.existsSync()) {
-      id.logger.warning(
-          'Skipping test of ${inputTestFile.path} -> ${outputTestFile?.path ?? '(no output)'}, input file does not exist.');
+      id.logger.warning('Skipping test $testName, input file does not exist.');
       return null;
     }
 
@@ -106,14 +109,17 @@ abstract class PuzzlePart {
 
     if (!outputFileExists) {
       id.logger.info(
-          'Output file does not exist for test ${inputTestFile.path} -> ${outputTestFile?.path ?? '(no output)'}. Running blind and printing the result');
+          'Output file does not exist for test $testName. Running blind and printing the result');
     }
-
+    watch.start();
     final result = run(inputTestFile.readAsStringSync());
+    watch.stop();
+
+    id.logger.fine(
+        'Ran test $testName in ${watch.elapsedMilliseconds / 1000} seconds');
 
     if (!outputFileExists) {
-      id.logger.info(
-          'Result for test ${inputTestFile.path} -> ${outputTestFile?.path ?? '(no output)'} is $result');
+      id.logger.info('Result for test $testName is $result');
       return null;
     }
 
@@ -121,8 +127,8 @@ abstract class PuzzlePart {
     final actual = result.output;
 
     if (actual != expected) {
-      id.logger
-          .warning('Test failed: $expected (expected) differs from $actual');
+      id.logger.warning(
+          'Test failed: $actual (actual) differs from $expected (expected)');
     }
 
     return actual == expected;

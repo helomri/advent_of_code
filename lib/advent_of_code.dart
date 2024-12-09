@@ -16,6 +16,8 @@ import 'package:advent_of_code/src/2024/7/1.dart';
 import 'package:advent_of_code/src/2024/7/2.dart';
 import 'package:advent_of_code/src/2024/8/1.dart';
 import 'package:advent_of_code/src/2024/8/2.dart';
+import 'package:advent_of_code/src/2024/9/1.dart';
+import 'package:advent_of_code/src/2024/9/2.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart';
 
@@ -156,4 +158,6 @@ Set<PuzzlePart> puzzleParts = {
   Puzzle2024072(),
   Puzzle2024081(),
   Puzzle2024082(),
+  Puzzle2024091(),
+  Puzzle2024092(),
 };

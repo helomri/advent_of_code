@@ -8,6 +8,20 @@ class Puzzle2024052 extends PuzzlePart {
   @override
   PuzzleIdentifier get id => PuzzleIdentifier(2024, 05, 2);
 
+  bool isValid(List<(int, int)> rules, List<int> pageNumbers) {
+    for (final rule in rules) {
+      if (pageNumbers.contains(rule.$1) && pageNumbers.contains(rule.$2)) {
+        final first = pageNumbers.indexOf(rule.$1);
+        final second = pageNumbers.indexOf(rule.$2);
+        if (first > second) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
   @override
   PuzzleOutput run(String input) {
     print('THIS IS NOT VALID, 2024/05/2 IS NOT YET SOLVED');

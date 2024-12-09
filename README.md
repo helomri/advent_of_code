@@ -18,5 +18,6 @@ That's my (usually) daily answers of AoC; I have the 2023 answers too, that I wi
 | 06  | [Guard Gallivant](https://adventofcode.com/2024/day/6)       | [✅](./lib/src/2024/6/1.dart) | [✅](./lib/src/2024/6/2.dart)  |
 | 07  | [Bridge Repair](https://adventofcode.com/2024/day/7)         | [✅](./lib/src/2024/7/1.dart) | [✅](./lib/src/2024/7/2.dart)  |
 | 08  | [Resonant Collinearity](https://adventofcode.com/2024/day/8) | [✅](./lib/src/2024/8/1.dart) | [✅](./lib/src/2024/8/2.dart)  |
+| 09  | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       | [✅](./lib/src/2024/9/1.dart) | [✅](./lib/src/2024/9/2.dart)  |
 
 *The way I did the problem works kinda well for the first part but is not at all adapted for the other one, I haven't found time yet to make it work

@@ -4,10 +4,8 @@ typedef Pos = ({int y, int x});
 
 class Puzzle2024102 extends PuzzlePart {
   @override
-  Map<String, String?> get dependentTestFiles => {
-        'test_input': 'test_output',
-        'input': null /*'output'*/
-      };
+  Map<String, String?> get dependentTestFiles =>
+      {'test_input': 'test_output', 'input': 'output'};
 
   @override
   PuzzleIdentifier get id => PuzzleIdentifier(2024, 10, 2);

@@ -43,22 +43,19 @@ class Puzzle2024052 extends PuzzlePart {
       List<int> pageNumbers =
           update.split(',').map((e) => int.parse(e)).toList();
 
-      bool valid = true;
-      for (final rule in pageRules) {
-        if (pageNumbers.contains(rule.$1) && pageNumbers.contains(rule.$2)) {
-          final first = pageNumbers.indexOf(rule.$1);
-          final second = pageNumbers.indexOf(rule.$2);
-          if (first > second) {
-            pageNumbers.removeAt(first);
-
-            pageNumbers.insert(0, rule.$1);
-            valid = false;
-          }
-        }
-      }
-
-      if (!valid) {
+      if (!isValid(pageRules, pageNumbers)) {
         print('Got: $pageNumbers');
+        pageNumbers.sort((a, b) {
+          if (!pageRules.any((element) => element.$1 == a)) {
+            return 1;
+          }
+          if (pageRules.any((element) => element.$1 == a && element.$2 == b)) {
+            return -1;
+          } else {
+            return 1;
+          }
+        });
+        print(isValid(pageRules, pageNumbers));
         sum += pageNumbers[(pageNumbers.length - 1) ~/ 2];
       }
     }

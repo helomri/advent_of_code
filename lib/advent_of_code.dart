@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:advent_of_code/src/2024/1/1.dart';
 import 'package:advent_of_code/src/2024/1/2.dart';
+import 'package:advent_of_code/src/2024/10/1.dart';
+import 'package:advent_of_code/src/2024/10/2.dart';
 import 'package:advent_of_code/src/2024/2/1.dart';
 import 'package:advent_of_code/src/2024/2/2.dart';
 import 'package:advent_of_code/src/2024/3/1.dart';
@@ -160,4 +162,6 @@ Set<PuzzlePart> puzzleParts = {
   Puzzle2024082(),
   Puzzle2024091(),
   Puzzle2024092(),
+  Puzzle2024101(),
+  Puzzle2024102(),
 };
